@@ -22,6 +22,7 @@ use App\Http\Controllers\CustomerController;
 
 Route::group(['middleware'=>'api'],function($routes){
     Route::post('/sendOtp',[CustomerController::class,'sendOtp']);
+    Route::post('/verifyOtp',[CustomerController::class,'verifyOtp']);
     // Route::post('/login',[ApiUserController::class,'login']);
  
 

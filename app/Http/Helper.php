@@ -6,23 +6,24 @@ use GuzzleHttp\Client;
 class Helper
 {
   
-   public static function test($otp,$mobile,$expires_min)
+   public static function test($otp,$mobile,$expires_min,$key)
     {
 
       $message = "Your OTP is: $otp. Please do not share it with anyone, as it will expire in $expires_min minutes.";
-
+      
   
       $curl = curl_init();
 
       curl_setopt_array($curl, [
-          CURLOPT_URL => "https://api.360messenger.com/sendMessage/PAi5DW7jsM7E0qoE6zzyeKP4ClK7foKJtOr",
+          // CURLOPT_URL => "https://api.360messenger.com/sendMessage/PAi5DW7jsM7E0qoE6zzyeKP4ClK7foKJtOr",
+          CURLOPT_URL => "https://api.360messenger.com/sendMessage/".$key,
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_FOLLOWLOCATION => true,
           CURLOPT_POST => true,
           CURLOPT_POSTFIELDS => [
               "phonenumber" => $mobile,
               "text" => $message,
-              "url" => "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example",
+              //"url" => "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example",
           ],
       ]);
 

@@ -24,7 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-     Route::get('/create-customer', [CustomerController::class, 'create'])->name('customer.add');
+     Route::get('/create-key', [CustomerController::class, 'create'])->name('customer.add');
+     Route::post('/storeApi',[CustomerController::class,'storeApiKey'])->name('store.api.key');   
+     Route::post('/updateApi',[CustomerController::class,'updateApiKey'])->name('update.api.key');   
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
